@@ -1,0 +1,90 @@
+{
+  "log": {
+    "disabled": false,
+    "level": "error",
+    "output": "sing-box.log",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "type": "local"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "type": "anytls",
+      "listen": "::",
+      "listen_port": 3742,
+      "tag": "anytls-in",
+      "users": [
+        {
+          "name": "sekai",
+          "password": "xxx"
+        }
+      ],
+      "padding_scheme": [
+        "stop=6",
+        "0=24-64",
+        "1=120-360",
+        "2=360-520,c,520-900,c,520-900,c,600-1100,c,700-1200",
+        "3=8-20,450-950",
+        "4=450-950",
+        "5=500-1050",
+        "6=600-1200",
+        "7=700-1200"
+      ],
+      "tls": {
+        "enabled": true,
+        "server_name": "xxx",
+        "acme": {
+          "domain": "xxx",
+          "data_directory": "/etc/sing-box/cert",
+          "default_server_name": "xxx",
+          "email": "xxx",
+          "dns01_challenge": {
+            "provider": "cloudflare",
+            "api_token": "324"
+          }
+        }
+      }
+    },
+    {
+      "type": "naive",
+      "listen": "::",
+      "listen_port": 10086,
+      "tag": "naive-in",
+      "users": [
+        {
+          "username": "sekai",
+          "password": "jcxv"
+        }
+      ],
+      "tls": {
+        "enabled": true,
+        "server_name": "xxx",
+        "acme": {
+          "email": "xxx",
+          "domain": "xxx",
+          "data_directory": "/etc/sing-box/cert",
+          "default_server_name": "xxx"
+        }
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "listen": "::",
+      "listen_port": 6666,
+      "tag": "ss2022-in",
+      "method": "2022-blake3-aes-128-gcm",
+      "password": "xxx"
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct-out"
+    }
+  ]
+}
