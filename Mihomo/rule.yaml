@@ -76,7 +76,7 @@ proxy-groups:
       include-all: true,
       tolerance: 20,
       interval: 300,
-      filter: "(?=.*(港|HK|🇭🇰|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$",
+      filter: "(?i)hk|hong kong|hongkong|🇭🇰",
     }
   - {
       name: 🏠 Residential,
