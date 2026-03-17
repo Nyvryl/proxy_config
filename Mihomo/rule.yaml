@@ -44,7 +44,7 @@ tun:
 
 dns:
   enable: true
-  ipv6: true
+  ipv6: false
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
@@ -59,7 +59,8 @@ dns:
     - "https://223.5.5.5/dns-query"
     - "https://doh.360.cn/dns-query"
   nameserver: # 用来解析没有匹配到任何「域名规则」的域名，通常是国外域名
-    - "https:/8.8.8.8/dns-query#PROXY&ecs=120.76.0.0/14&ecs-override=true"
+    - "https://8.8.8.8/dns-query#PROXY&ecs=120.76.0.0/14&ecs-override=true"
+    - "1.1.1.1"
 
 domain_rule: &domain_rule
   type: http
